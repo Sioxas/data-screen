@@ -5,7 +5,7 @@
       <area-stack></area-stack>
     </div>
     <div class="middle">
-
+      <map-chart></map-chart>
     </div>
     <div class="right">
       <nightingale-rose-chart></nightingale-rose-chart>
@@ -19,10 +19,11 @@
   import bubbleChart from './components/bubble-chart.vue'
   import areaStack from './components/area-stack.vue'
   import nightingaleRoseChart from './components/nightingale-rose-chart.vue'
+  import mapChart from './components/map-chart.vue'
 
   export default {
     name: 'app',
-    components:{bubbleChart,areaStack,nightingaleRoseChart},
+    components:{bubbleChart,areaStack,nightingaleRoseChart,mapChart},
     data(){
       return {}
     },

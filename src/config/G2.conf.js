@@ -2,8 +2,9 @@
  * Created by sioxa on 2017/2/27 0027.
  */
 import G2 from 'g2'
+import colors from './colors.js'
 
-let DEFAULT_COLOR = '#4E7CCC';
+let DEFAULT_COLOR = colors.DEFAULT;
 let FONT_FAMILY = '"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", SimSun, "sans-serif"';
 let Theme = {
   defaultColor: DEFAULT_COLOR, // 默认主题色
@@ -76,7 +77,7 @@ let Theme = {
       },
       tickLine: {
         lineWidth: 1,
-        stroke: '#2cb6ba',
+        stroke: colors.DEFAULT,
         value: 5
       }
     },
@@ -97,11 +98,11 @@ let Theme = {
       },
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       tickLine: {
         lineWidth: 1,
-        stroke: '#2cb6ba',
+        stroke: colors.DEFAULT,
         value: 5
       }
     },
@@ -120,16 +121,16 @@ let Theme = {
       },
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       tickLine: {
         lineWidth: 1,
-        stroke: '#2cb6ba',
+        stroke: colors.DEFAULT,
         value: 5
       },
       grid: {
         line: {
-          stroke: '#2cb6ba',
+          stroke: colors.DEFAULT,
           lineWidth: 1,
           lineDash: [2, 2]
         }
@@ -150,11 +151,11 @@ let Theme = {
       },
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       tickLine: {
         lineWidth: 1,
-        stroke: '#2cb6ba',
+        stroke: colors.DEFAULT,
         value: 5
       }
     },
@@ -162,11 +163,11 @@ let Theme = {
       labelOffset: 5,
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       grid: {
         line: {
-          stroke: '#2cb6ba',
+          stroke: colors.DEFAULT,
           lineWidth: 1,
           lineDash: [1, 3]
         }
@@ -183,7 +184,7 @@ let Theme = {
       tickLine: {
         lineWidth: 1,
         value: -20,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       subTick: 5,
       labels: {
@@ -216,11 +217,11 @@ let Theme = {
       },
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       grid: {
         line: {
-          stroke: '#2cb6ba',
+          stroke: colors.DEFAULT,
           lineWidth: 1,
           lineDash: [2, 2]
         },
@@ -234,12 +235,12 @@ let Theme = {
       },
       line: {
         lineWidth: 1,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       },
       tickLine: {
         lineWidth: 1,
         value: 5,
-        stroke: '#2cb6ba'
+        stroke: colors.DEFAULT
       }
     }
   },

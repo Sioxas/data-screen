@@ -9,6 +9,7 @@
 <script type="text/ecmascript-6">
   import uiFrame from './ui-frame.vue'
   import G2 from '../config/G2.conf'
+  import colors from '../config/colors'
   import {nightingale_rose_chart} from '../mock/mock.js'
   export default {
     data () {
@@ -54,7 +55,7 @@
         .label('cost',{offset: -15,label: {textAlign: 'center', fill: '#fff'}})
         .style({
           lineWidth: 1,
-          stroke: 'rgb(44, 182, 186)'
+          stroke: colors.LIGHT
         });
       chart.render();
     }
