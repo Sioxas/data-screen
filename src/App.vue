@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <div class="left">
-      <bubble-chart></bubble-chart>
-      <area-stack></area-stack>
+    <div class="header">
+      <h1>工业大数据可视化分析平台</h1>
     </div>
-    <div class="middle">
-      <map-chart></map-chart>
-    </div>
-    <div class="right">
-      <nightingale-rose-chart></nightingale-rose-chart>
+    <div class="content">
+      <div class="left">
+        <bubble-chart></bubble-chart>
+        <area-stack></area-stack>
+      </div>
+      <div class="middle">
+        <map-chart></map-chart>
+        <heatmap-chart></heatmap-chart>
+      </div>
+      <div class="right">
+        <corona-chart></corona-chart>
+        <nightingale-rose-chart></nightingale-rose-chart>
+      </div>
     </div>
 
 
@@ -20,10 +27,12 @@
   import areaStack from './components/area-stack.vue'
   import nightingaleRoseChart from './components/nightingale-rose-chart.vue'
   import mapChart from './components/map-chart.vue'
+  import coronaChart from './components/corona-chart.vue'
+  import heatmapChart from './components/heatmap-chart.vue'
 
   export default {
     name: 'app',
-    components:{bubbleChart,areaStack,nightingaleRoseChart,mapChart},
+    components: {bubbleChart, areaStack, nightingaleRoseChart, mapChart, coronaChart,heatmapChart},
     data(){
       return {}
     },
@@ -36,34 +45,39 @@
 
 <style lang="less" rel="stylesheet/less">
 
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
-  html, body {
-    height: 100%;
-  }
-
   #app {
+    @light:#30ebef;
+    @default:#2cb6ba;
+    @dark:#22787c;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+    /*color: #2c3e50;*/
     background: #18242e;
-    height:100%;
-    display:flex;
-    flex-direction:row;
-    .left{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .header {
+      color: @default;
+      padding-top: 20px;
+      text-align: center;
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      .left {
 
+      }
+
+      .middle {
+        flex-grow: 1;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        /*align-items:flex-end;*/
+      }
     }
 
-    .middle{
-      flex-grow:1;
-    }
-    .right{
-      display:flex;
-      align-items:flex-end;
-    }
   }
 </style>
