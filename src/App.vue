@@ -7,6 +7,7 @@
       <div class="left">
         <bubble-chart></bubble-chart>
         <area-stack></area-stack>
+        <line-chart></line-chart>
       </div>
       <div class="middle">
         <map-chart></map-chart>
@@ -29,10 +30,11 @@
   import mapChart from './components/map-chart.vue'
   import coronaChart from './components/corona-chart.vue'
   import heatmapChart from './components/heatmap-chart.vue'
+  import lineChart from './components/line-chart.vue'
 
   export default {
     name: 'app',
-    components: {bubbleChart, areaStack, nightingaleRoseChart, mapChart, coronaChart,heatmapChart},
+    components: {bubbleChart, areaStack, nightingaleRoseChart, mapChart, coronaChart,heatmapChart,lineChart},
     data(){
       return {}
     },

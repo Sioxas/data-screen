@@ -48,6 +48,11 @@ export const asia_data =[
 export const years=['1750','1800','1850','1900','1950','1999','2050']
 export const asia_value_1=[502,635,809,947,1402,3634,5268]
 export const asia_value_2=[635,809,947,1402,3634,5268,502]
+export const asia_value_3=[809,947,1402,3634,5268,502,635]
+export const asia_value_4=[947,1402,3634,5268,502,635,809]
+export const asia_value_5=[1402,3634,5268,502,635,809,947]
+export const asia_value_6=[3634,5268,502,635,809,947,1402]
+export const asia_value_7=[5268,502,635,809,947,1402,3634]
 
 export function get_data_array(data){
   return data.map(a=>a.value);
@@ -56,7 +61,7 @@ export function get_data_array(data){
 export function assign_value(arr,data){
   let t=data;
   for(let i=0;i<years.length;++i)
-    t[i].value=arr[years[i]]
+    t[i].value=arr[i]
   return t;
 }
 
