@@ -23,7 +23,8 @@
       let chart = new G2.Chart({
         id: 'bubble-chart',
         forceFit: true,
-        height: 200
+        height: 200,
+        margin: [30, 80, 60, 80]
       })
       chart.source(bubble, {
         'LifeExpectancy': {

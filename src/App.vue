@@ -10,9 +10,12 @@
         <line-chart></line-chart>
       </div>
       <div class="middle">
-        <map-chart></map-chart>
-        <heatmap-chart></heatmap-chart>
+        <machines-pannel></machines-pannel>
       </div>
+      <!--<div class="right">-->
+        <!--<map-chart></map-chart>-->
+        <!--<heatmap-chart></heatmap-chart>-->
+      <!--</div>-->
       <div class="right">
         <corona-chart></corona-chart>
         <nightingale-rose-chart></nightingale-rose-chart>
@@ -31,10 +34,11 @@
   import coronaChart from './components/corona-chart.vue'
   import heatmapChart from './components/heatmap-chart.vue'
   import lineChart from './components/line-chart.vue'
+  import machinesPannel from './views/machines-pannel/index.vue'
 
   export default {
     name: 'app',
-    components: {bubbleChart, areaStack, nightingaleRoseChart, mapChart, coronaChart,heatmapChart,lineChart},
+    components: {bubbleChart, areaStack, nightingaleRoseChart, mapChart, coronaChart,heatmapChart,lineChart,machinesPannel},
     data(){
       return {}
     },
@@ -47,10 +51,8 @@
 
 <style lang="less" rel="stylesheet/less">
 
+  @import './style/colors.less';
   #app {
-    @light:#30ebef;
-    @default:#2cb6ba;
-    @dark:#22787c;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -60,7 +62,7 @@
     display: flex;
     flex-direction: column;
     .header {
-      color: @default;
+      color: @DEFAULT;
       padding-top: 20px;
       text-align: center;
     }
@@ -68,7 +70,7 @@
       display: flex;
       flex-direction: row;
       .left {
-
+        padding:10px;
       }
 
       .middle {

@@ -20,14 +20,14 @@ let Theme = {
         title: {
           fontSize: 14,
           textAlign: 'center',
-          fill: '#999'
+          fill: colors.LIGHT
         }
       },
       colTitle: {
         title: {
           fontSize: 12,
           textAlign: 'center',
-          fill: '#999'
+          fill: colors.LIGHT
         }
       },
       rowTitle: {
@@ -35,7 +35,7 @@ let Theme = {
           fontSize: 12,
           textAlign: 'center',
           rotate: 90,
-          fill: '#999'
+          fill: colors.LIGHT
         }
       },
       rowDimTitle: {
@@ -43,7 +43,7 @@ let Theme = {
           fontSize: 12,
           textAlign: 'center',
           rotate: 90,
-          fill: '#999'
+          fill: colors.LIGHT
         }
       }
     }
@@ -67,11 +67,11 @@ let Theme = {
       titleOffset: 30,
       title: {
         fontSize: 12,
-        fill: '#999'
+        fill: colors.LIGHT
       },
       labels: {
         label: {
-          fill: '#6e6e6e',
+          fill: colors.LIGHT,
           fontSize: 12
         }
       },
@@ -88,11 +88,11 @@ let Theme = {
       title: {
         fontSize: 12,
         textAlign: 'center',
-        fill: '#999'
+        fill: colors.LIGHT
       },
       labels: {
         label: {
-          fill: '#6e6e6e',
+          fill: colors.LIGHT,
           fontSize: 12
         }
       },
@@ -112,11 +112,11 @@ let Theme = {
       labelOffset: 13,
       title: {
         fontSize: 12,
-        fill: '#999'
+        fill: colors.LIGHT
       },
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       },
       line: {
@@ -142,11 +142,11 @@ let Theme = {
       labelOffset: 13,
       title: {
         fontSize: 12,
-        fill: '#999'
+        fill: colors.LIGHT
       },
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       },
       line: {
@@ -174,7 +174,7 @@ let Theme = {
       },
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       }
     },
@@ -189,7 +189,7 @@ let Theme = {
       subTick: 5,
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       }
     },
@@ -204,7 +204,7 @@ let Theme = {
       subTick: 5,
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       }
     },
@@ -212,7 +212,7 @@ let Theme = {
       titleOffset: 45,
       labels: {
         label: {
-          fill: '#6e6e6e'
+          fill: colors.LIGHT
         }
       },
       line: {
@@ -247,7 +247,7 @@ let Theme = {
   labels: {
     offset: 14,
     label: {
-      fill: '#666',
+      fill: colors.LIGHT,
       fontSize: 12
     }
   },
@@ -282,7 +282,13 @@ let Theme = {
       markerAlign: 'center',
       wordSpaceing: 12,
       width: 20,
-      height: 156
+      height: 156,
+      word:{
+        fill:colors.LIGHT
+      },
+      title:{
+        fill:colors.LIGHT
+      }
     },
     left: {
       position: 'left',
@@ -292,7 +298,10 @@ let Theme = {
       markerAlign: 'center',
       wordSpaceing: 12,
       width: 20,
-      height: 156
+      height: 156,
+      word:{
+        fill:colors.LIGHT
+      }
     },
     top: {
       position: 'top',
@@ -303,7 +312,10 @@ let Theme = {
       markerAlign: 'center',
       wordSpaceing: 12,
       width: 156,
-      height: 20
+      height: 20,
+      word:{
+        fill:colors.LIGHT
+      }
     },
     bottom: {
       position: 'bottom',
@@ -314,14 +326,17 @@ let Theme = {
       markerAlign: 'center',
       wordSpaceing: 12,
       width: 156,
-      height: 20
+      height: 20,
+      word:{
+        fill:colors.LIGHT
+      }
     }
   },
   tooltip: {
     crosshairs: false,
     offset: 15,
     crossLine: {
-      stroke: '#666'
+      stroke: colors.LIGHT
     },
     wordSpaceing: 6,
     markerCfg: {
@@ -414,7 +429,7 @@ let Theme = {
   },
   guide: {
     text: {
-      fill: '#666',
+      fill: colors.LIGHT,
       fontSize: 12
     },
     line: {
@@ -432,7 +447,7 @@ let Theme = {
         lineDash: [0, 2, 2]
       },
       text: {
-        fill: '#666',
+        fill: colors.LIGHT,
         fontSize: 12,
         textAlign: 'center'
       },

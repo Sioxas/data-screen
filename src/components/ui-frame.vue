@@ -33,9 +33,12 @@
         }
       }
       .ui-border{
-        border:1px solid #2cb6ba;
-        box-shadow:0 0 5px 2px #2cb6ba inset;
+        /*border:1px solid #2cb6ba;*/
+        /*box-shadow:0 0 5px 2px #2cb6ba inset;*/
         padding:5px;
+        /*background: rgba(34, 120, 124, 0.2);*/
+        border-radius:10px;
+        background-image: linear-gradient(135deg, rgba(44, 182, 186, 0.5) 0%, rgba(34, 120, 124, 0.5) 100%);
       }
     }
 </style>
