@@ -9,7 +9,7 @@
 <script type="text/ecmascript-6">
   import uiFrame from './ui-frame.vue'
   import G2 from '../config/G2.conf'
-  import * as area_stack from '../mock/area-stack.js'
+  import * as area_stack from '../mock/area_stack.js'
   export default {
     data () {
       return {

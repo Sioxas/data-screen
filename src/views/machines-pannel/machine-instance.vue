@@ -19,7 +19,20 @@
     methods: {},
     computed: {
       state_style_name(){
-        return this.state.toLowerCase()
+        switch (this.state) {
+          case -1:
+            return 'off';
+            break;
+          case 'a':
+            return 'alarm';
+            break;
+          case 3:
+            return 'on';
+            break;
+          default:
+            return 'standby';
+            break;
+        }
       }
     }
   }
@@ -63,7 +76,7 @@
         color: @OFF+#353535;
       }
     }
-    .alert {
+    .alarm {
       border: 1px solid @ALARM+#353535;
       background: @ALARM;
       &:hover {

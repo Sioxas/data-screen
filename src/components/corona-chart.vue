@@ -7,7 +7,7 @@
 <script type="text/ecmascript-6">
   import G2 from '../config/G2.conf'
   import colors from '../config/colors'
-  import data from './../mock/page-views'
+  import data from '../mock/page_views'
   export default {
     data () {
       return {

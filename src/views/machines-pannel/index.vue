@@ -5,95 +5,29 @@
         <ul>
           <li style="color:#30ebef">
             <span class="state-text">运行</span>
-            <span class="number">25</span>
+            <span class="number">{{count.on}}</span>
           </li>
           <li style="color:#ef9d94">
             <span class="state-text">报警</span>
-            <span class="number">3</span>
+            <span class="number">{{count.alarm}}</span>
           </li>
           <li style="color:#d7f175">
             <span class="state-text">待机</span>
-            <span class="number">10</span>
+            <span class="number">{{count.standby}}</span>
           </li>
           <li style="color:#c3cfe2">
             <span class="state-text">关机</span>
-            <span class="number">8</span>
+            <span class="number">{{count.off}}</span>
           </li>
         </ul>
       </div>
       <div class="blank"></div>
       <div class="machines-grid">
-        <div class="machines-col machines-col-1">
+        <div class="machines-col machines-col-1" v-for="area in machineAreas">
           <ul>
-            <li>
-              <machine-instance state="on" mid="1"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="off" mid="2"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="alert" mid="3"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-            </li>
-          </ul>
-        </div>
-        <div class="machines-col machines-col-2">
-          <ul>
-            <li>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="off" mid="2"></machine-instance>
-              <machine-instance state="off" mid="2"></machine-instance>
-              <machine-instance state="off" mid="2"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="alert" mid="3"></machine-instance>
-              <machine-instance state="alert" mid="3"></machine-instance>
-              <machine-instance state="alert" mid="3"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-            </li>
-          </ul>
-        </div>
-        <div class="machines-col machines-col-3">
-          <ul>
-            <li>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="off" mid="2"></machine-instance>
-              <machine-instance state="off" mid="2"></machine-instance>
-              <machine-instance state="off" mid="2"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="alert" mid="3"></machine-instance>
-              <machine-instance state="alert" mid="3"></machine-instance>
-              <machine-instance state="alert" mid="3"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-              <machine-instance state="STANDBY" mid="4"></machine-instance>
-            </li>
-            <li>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
-              <machine-instance state="on" mid="1"></machine-instance>
+            <li v-for="row in machineRows(area)">
+              <machine-instance :state="item.state" :mid="item.id" v-for="item in row"
+                                :key="item.id"></machine-instance>
             </li>
           </ul>
         </div>
@@ -106,72 +40,121 @@
 <script type="text/ecmascript-6">
   import uiFrame from '../../components/ui-frame.vue'
   import machineInstance from './machine-instance.vue'
+  import machinePosition from '../../config/machine_position'
+  import groupBy from 'lodash/groupBy'
+  import find from 'lodash/find'
+  import forEach from 'lodash/forEach'
+  import querystring from 'querystring'
   export default {
     data () {
       return {
-        msg: 'Hello Vue!'
+        machinePosition: machinePosition.filter(a => a.plant === 1)
       }
     },
-    components: {uiFrame,machineInstance},
-    methods: {}
+    components: {uiFrame, machineInstance},
+    methods: {
+      machineRows(area){
+        return groupBy(area, a => a.row)
+      }
+    },
+    computed: {
+      machineAreas(){
+        return groupBy(this.machinePosition, a => a.area)
+      },
+      count(){
+        let res = {
+          on: 0,
+          off: 0,
+          alarm: 0,
+          standby: 0
+        }
+        forEach(this.machinePosition, i => {
+          switch (i.state) {
+            case -1:
+              res.off++
+              break;
+            case 'a':
+              res.alarm++
+              break;
+            case 3:
+              res.on++
+              break;
+            default:
+              res.standby++
+              break;
+          }
+        })
+        return res
+      }
+    },
+    mounted(){
+      let that = this
+      this.$http.post('http://localhost/login/index_files/data_plant_status.php', querystring.stringify({
+        plant: 1
+      }), {
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(response => {
+        let machineState = response.data
+        that.machinePosition = machineState.map(item => {
+          return {
+            ...find(that.machinePosition, chr => chr.id === item.MachineID),
+            state: item.run
+          }
+        })
+      })
+    }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less" rel="stylesheet/less">
   @import './../../style/colors';
-.machines-pannel{
-  display:flex;
-  flex-direction:column;
-  padding:5px;
-  .summary{
-    border:1px solid @LIGHT;
-    border-radius: 10px;
-    padding:10px;
-    ul{
-      list-style:none;
-      display:flex;
-      flex-direction:row;
-      justify-content:space-around;
-      li{
-        .state-text{
-          font-size:14px;
-        }
-        .number{
-          font-size:20px;
-        }
-      }
-    }
-  }
-  .machines-grid{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around;
-    .machines-col{
-      border:1px solid @LIGHT;
+
+  .machines-pannel {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    .summary {
+      border: 1px solid @LIGHT;
       border-radius: 10px;
-      padding:10px;
-      ul{
-        list-style:none;
-        li{
-          display:flex;
-          flex-direction:row;
-          justify-content:space-around;
+      padding: 10px;
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        li {
+          .state-text {
+            font-size: 14px;
+          }
+          .number {
+            font-size: 20px;
+          }
         }
       }
     }
-    .machines-col-1{
+    .machines-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .machines-col {
+        border: 1px solid @LIGHT;
+        border-radius: 10px;
+        padding: 10px;
+        ul {
+          list-style: none;
+          li {
+            display: flex;
+            flex-direction: row;
+          }
+        }
+      }
 
     }
-    .machines-col-2{
-
-    }
-    .machines-col-3{
-
+    .blank {
+      height: 20px;
     }
   }
-  .blank{
-    height: 20px;
-  }
-}
 </style>
