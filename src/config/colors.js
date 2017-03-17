@@ -7,8 +7,8 @@ export default {
   LIGHT: '#30ebef',
   machine_state:{
     ON:'#30ebef',//运行
-    OFF:'#c3cfe2',//关机
-    ALERT:'#ef9d94',//报警
-    STANDBY:'#d7f175'//待机
+    OFF:'#a3a3a3',//关机
+    ALARM:'#FF4949',//报警
+    STANDBY:'#22787c'//待机
   }
 }

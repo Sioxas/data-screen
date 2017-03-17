@@ -15,7 +15,8 @@
     "tween.js": "^16.6.0",
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

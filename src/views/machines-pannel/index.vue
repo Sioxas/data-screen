@@ -3,21 +3,22 @@
     <div class="machines-pannel">
       <div class="summary">
         <ul>
-          <li style="color:#30ebef">
+          <li :style="{color:color.ON}">
             <span class="state-text">运行</span>
             <span class="number">{{count.on}}</span>
           </li>
-          <li style="color:#ef9d94">
-            <span class="state-text">报警</span>
-            <span class="number">{{count.alarm}}</span>
-          </li>
-          <li style="color:#d7f175">
+
+          <li :style="{color:color.STANDBY}">
             <span class="state-text">待机</span>
             <span class="number">{{count.standby}}</span>
           </li>
-          <li style="color:#c3cfe2">
+          <li :style="{color:color.OFF}">
             <span class="state-text">关机</span>
             <span class="number">{{count.off}}</span>
+          </li>
+          <li :style="{color:color.ALARM}">
+            <span class="state-text">报警</span>
+            <span class="number">{{count.alarm}}</span>
           </li>
         </ul>
       </div>
@@ -45,10 +46,14 @@
   import find from 'lodash/find'
   import forEach from 'lodash/forEach'
   import querystring from 'querystring'
+
+  import colors from '../../config/colors'
+
   export default {
     data () {
       return {
-        machinePosition: machinePosition.filter(a => a.plant === 1)
+        machinePosition: machinePosition.filter(a => a.plant === 1),
+        color:colors.machine_state
       }
     },
     components: {uiFrame, machineInstance},

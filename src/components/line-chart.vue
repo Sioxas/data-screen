@@ -70,7 +70,7 @@
         }
         addData();
         chart.changeData(data); // 动态更新数据
-      }, 700);
+      }, 1000);
     }
   }
 </script>
