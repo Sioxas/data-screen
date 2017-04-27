@@ -1,0 +1,23 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "npm",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "启动程序",
+            "args": ["run","dev"],
+            "suppressTaskName": true,
+            "isBackground": true
+        },
+        {
+            "taskName": "打包",
+            "args": ["run","build"],
+            "suppressTaskName": true,
+            "isBuildCommand": true
+        }
+    ]
+}

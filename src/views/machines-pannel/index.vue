@@ -27,8 +27,12 @@
         <div class="machines-col machines-col-1" v-for="area in machineAreas">
           <ul>
             <li v-for="row in machineRows(area)">
-              <machine-instance :state="item.state" :mid="item.id" v-for="item in row"
-                                :key="item.id"></machine-instance>
+              <machine-instance :state="item.state" 
+                                :mid="item.id" 
+                                v-for="item in row"
+                                :key="item.id"
+>
+                                </machine-instance>
             </li>
           </ul>
         </div>
@@ -39,6 +43,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  
   import uiFrame from '../../components/ui-frame.vue'
   import machineInstance from './machine-instance.vue'
   import machinePosition from '../../config/machine_position'
@@ -122,7 +127,7 @@
     flex-direction: column;
     padding: 5px;
     .summary {
-      border: 1px solid @LIGHT;
+      border: 1px solid @DEFAULT;
       border-radius: 10px;
       padding: 10px;
       ul {
@@ -145,7 +150,7 @@
       flex-direction: row;
       justify-content: space-around;
       .machines-col {
-        border: 1px solid @LIGHT;
+        border: 1px solid @DEFAULT;
         border-radius: 10px;
         padding: 10px;
         ul {
