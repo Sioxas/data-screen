@@ -3,12 +3,12 @@
  */
 import $http from 'axios'
 import querystring from 'querystring'
-import DateX from './../utils/data-format.js'
+import DateX from './../utils/date-format.js'
 
 export default {
   /**
    * 获取机床面板状态
-   * 
+   *
    * @param {number} plantID 车间编号
    * @returns {Promise} Http Promise
    */
@@ -24,7 +24,7 @@ export default {
 
   /**
    * 获取机床详细信息
-   * 
+   *
    * @param {number} plantID 车间编号
    * @param {number} machineID 机床编号
    * @returns {Promise} Http Promise

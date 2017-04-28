@@ -22,7 +22,7 @@
       </div>
     </div>
     <transition name="fade">
-      <machine-detail v-if="machineDetailShow"></machine-detail>
+      <router-view></router-view>
     </transition>
   </div>
 </template>

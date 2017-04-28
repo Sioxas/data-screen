@@ -18,7 +18,7 @@ export default {
   components: {},
   methods: {
     openMachineDetail(machineID) {
-      console.log('open')
+      this.$router.push('detail')
       this.$store.commit(types.OPEN_MACHINE_DETAIL_PANNEL, machineID)
     }
   },
