@@ -16,7 +16,7 @@ export default new Router({
       children:[
           {
               path:'/',
-              component:BaseInfo
+              redirect:'baseinfo'
           },
           {
               path:'baseinfo',

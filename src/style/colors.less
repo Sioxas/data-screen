@@ -6,3 +6,44 @@
 @OFF: #000013;
 @ALARM: #FF4949;
 @STANDBY:#a3a3a3;
+
+.on {
+        border: 1px solid @ON+#353535;
+        background: @ON;
+        &:hover {
+            box-shadow: 0 0 5px 2px @ON;
+        }
+        span {
+            color: @ON+#353535;
+        }
+    }
+    .off {
+        border: 1px solid @OFF+#353535;
+        background: @OFF;
+        &:hover {
+            box-shadow: 0 0 5px 2px @OFF;
+        }
+        span {
+            color: @OFF+#353535;
+        }
+    }
+    .alarm {
+        border: 1px solid @ALARM+#353535;
+        background: @ALARM;
+        &:hover {
+            box-shadow: 0 0 5px 2px @ALARM;
+        }
+        span {
+            color: @ALARM+#353535;
+        }
+    }
+    .standby {
+        border: 1px solid @STANDBY+#353535;
+        background: @STANDBY;
+        &:hover {
+            box-shadow: 0 0 5px 2px @STANDBY;
+        }
+        span {
+            color: @STANDBY+#353535;
+        }
+    }

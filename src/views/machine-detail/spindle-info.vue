@@ -1,16 +1,16 @@
 <template>
-  <div class="spindle-info">
-      主轴信息
-  </div>
+    <div class="spindle-info">
+        主轴信息
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'SpindleInfo',
-  data () {
-    return {
+    name: 'SpindleInfo',
+    data() {
+        return {
+        }
     }
-  }
 }
 </script>
 

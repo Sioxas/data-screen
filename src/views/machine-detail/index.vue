@@ -9,7 +9,7 @@
             </div>
             <ui-frame>
                 <div class="machine-detail-header">
-                    {{plantID}}车间{{machineID}}号机床
+                    <h2>{{plantID}}车间{{machineID}}号机床</h2>
                 </div>
                 <div class="machine-detail-content">
                     <div class="tab-linker">
@@ -18,7 +18,9 @@
                         <router-link to="/detail/alarm" class="inactive">报警信息</router-link>
                         <div class="inactive"></div>
                     </div>
-                    <router-view></router-view>
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
                 </div>
             </ui-frame>
         </div>
@@ -73,30 +75,36 @@ export default {
         }
         .machine-detail-header {
             color: #fff;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
         }
         .machine-detail-content {
             color: #fff;
-            .tab-linker{
-                display:flex;
-                flex-direction:row;
-                height:50px;
-                line-height:50px;
-                .inactive{
+            .tab-linker {
+                display: flex;
+                flex-direction: row;
+                height: 50px;
+                line-height: 50px;
+                .inactive {
                     text-decoration: none;
-                    border-bottom:1px solid @DEFAULT;
-                    padding:0 10px;
-                    &:last-child{
-                        flex-grow:1;
+                    border: 1px solid rgba(0, 0, 0, 0);
+                    border-bottom: 1px solid @DEFAULT;
+                    padding: 0 10px;
+                    &:last-child {
+                        flex-grow: 1;
                     }
                 }
-                .router-link-active{
-                    border:1px solid @DEFAULT;
-                    border-bottom:none;
+                .router-link-active {
+                    border: 1px solid @DEFAULT;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0);
                 }
-                a{
-                    &:link,&:visited,&:hover{
+                a {
+                    &:link,
+                    &:visited,
+                    &:hover {
                         text-decoration: none;
-                        color:#fff;
+                        color: #fff;
                     }
                 }
             }
