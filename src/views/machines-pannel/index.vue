@@ -93,14 +93,16 @@ export default {
     },
     mounted() {
         let that = this
-        this.$api.getPlantStatus(1).then(response => {
-            let machineState = response.data
+        this.$api.getPlantStatus(1).then(data => {
+            let machineState = data
             that.machinePosition = machineState.map(item => {
                 return {
                     ...find(that.machinePosition, chr => chr.id === item.MachineID),
                     state: item.run
                 }
             })
+        }).catch(e=>{
+            console.error(e)
         })
     }
 }

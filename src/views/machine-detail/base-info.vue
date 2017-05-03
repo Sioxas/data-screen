@@ -1,7 +1,8 @@
 <template>
     <div class="base-info">
         <div class="loading" v-if="loading">
-            <img src="./../../assets/loading.gif" alt="正在加载">
+            <img v-if="!error" src="./../../assets/loading.gif" alt="正在加载">
+            <h2 class="loading-error" v-if="error">加载失败</h2>
         </div>
         <div class="pannel-row" v-if="!loading">
             <div class="machine-state">
@@ -71,6 +72,7 @@ export default {
     data() {
         return {
             loading: true,
+            error: false,
             machineState: null,
             machineStart: null,
             type: null,
@@ -118,36 +120,40 @@ export default {
         }
     },
     mounted() {
-        this.$api.getMachineDetail(this.plantID, this.machineID).then(response => {
-            this.machineState = response.data.machine_state    //机床状态
-            this.machineStart = response.data.machine_start    //开机时间
-            this.type = response.data.type             //机床型号
-            this.machineCustomType = response.data.MachineCustomType//机床类型
-            this.macIP = response.data.mac_ip           //机床IP
-            this.num = response.data.num              //累计加工数量
-            this.processNo = response.data.main_pro         //程序号
-            this.wheelType = response.data.wheel_type       //轮型
-            this.operationMethod = response.data.method           //操作方式
-            this.loadMain = response.data.load_main        //负载
-            this.feedRate = response.data.power_jingei     //进给倍率
+        console.log(this)
+        this.$api.getMachineDetail(this.plantID, this.machineID).then(data => {
+                this.machineState = data.machine_state    //机床状态
+                this.machineStart = data.machine_start    //开机时间
+                this.type = data.type             //机床型号
+                this.machineCustomType = data.MachineCustomType//机床类型
+                this.macIP = data.mac_ip           //机床IP
+                this.num = data.num              //累计加工数量
+                this.processNo = data.main_pro         //程序号
+                this.wheelType = data.wheel_type       //轮型
+                this.operationMethod = data.method           //操作方式
+                this.loadMain = data.load_main        //负载
+                this.feedRate = data.power_jingei     //进给倍率
 
-            setInterval(() => {
-                let startTime = datetime_to_unix(this.machineStart)
-                let now = datetime_to_unix((new Date).Format('yyyy-MM-dd hh:mm:ss'))
-                let da = now - startTime
-                //计算相差天数
-                let days = Math.floor(da / (24 * 3600))
-                let leave1 = da % (24 * 3600)//计算天数后剩余的毫秒数
-                let hours = Math.floor(leave1 / (3600))
-                //计算相差分钟数
-                let leave2 = leave1 % 3600//计算小时数后剩余的毫秒数
-                let minutes = Math.floor(leave2 / 60)
-                //计算相差秒数
-                let leave3 = leave2 % 60     //计算分钟数后剩余的毫秒数
-                let seconds = Math.round(leave3)
-                this.runTime = { days, hours, minutes, seconds }
-            }, 1000)
-            this.loading = false
+                setInterval(() => {
+                    let startTime = datetime_to_unix(this.machineStart)
+                    let now = datetime_to_unix((new Date).Format('yyyy-MM-dd hh:mm:ss'))
+                    let da = now - startTime
+                    //计算相差天数
+                    let days = Math.floor(da / (24 * 3600))
+                    let leave1 = da % (24 * 3600)//计算天数后剩余的毫秒数
+                    let hours = Math.floor(leave1 / (3600))
+                    //计算相差分钟数
+                    let leave2 = leave1 % 3600//计算小时数后剩余的毫秒数
+                    let minutes = Math.floor(leave2 / 60)
+                    //计算相差秒数
+                    let leave3 = leave2 % 60     //计算分钟数后剩余的毫秒数
+                    let seconds = Math.round(leave3)
+                    this.runTime = { days, hours, minutes, seconds }
+                }, 1000)
+                this.loading = false
+        }).catch(e => {
+            this.error = true
+            console.error(e)
         })
     },
     filters: {
