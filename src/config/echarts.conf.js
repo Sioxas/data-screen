@@ -1,7 +1,13 @@
 import colors from './colors'
 
+/**自定义全局默认样式 */
 const _option = {
     title: { show: false },
+    legend:{
+        textStyle:{
+            color:colors.LIGHT
+        }
+    },
     xAxis: {
         axisLine: {
             lineStyle: {
@@ -43,7 +49,7 @@ const _option = {
         bottom: 30,
         borderColor: colors.DEFAULT
     },
-    color: [colors.LIGHT]
+    color: [colors.LIGHT,'#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
 }
 
 /**
@@ -60,6 +66,14 @@ function deepMerge(target, source) {
     return target
 }
 
+/**
+ * 合并Option
+ *
+ * @export
+ * @param {Object} option
+ * @returns {Object} Option
+ */
 export function mixOption(option) {
-    return deepMerge(option, _option)
+    let t = JSON.parse(JSON.stringify(_option)) //深拷贝
+    return deepMerge(t, option)
 }

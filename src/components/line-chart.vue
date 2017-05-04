@@ -8,17 +8,10 @@
 
 <script type="text/ecmascript-6">
 import echarts from 'echarts'
-import colors from './../config/colors'
 import {mixOption} from './../config/echarts.conf'
 import uiFrame from './ui-frame.vue'
 export default {
-    data() {
-        return {
-            msg: 'Hello Vue!'
-        }
-    },
     components: { uiFrame },
-    methods: {},
     mounted() {
         // 基于准备好的dom，初始化echarts实例
         let myChart = echarts.init(document.getElementById('line-chart'))

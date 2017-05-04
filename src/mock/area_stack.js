@@ -1,80 +1,71 @@
-/**
- * Created by sioxa on 2017/3/2 0002.
- */
-export const area_stack = [
-  {country: 'Asia', year: '1750', value: 502},
-  {country: 'Asia', year: '1800', value: 635},
-  {country: 'Asia', year: '1850', value: 809},
-  {country: 'Asia', year: '1900', value: 947},
-  {country: 'Asia', year: '1950', value: 1402},
-  {country: 'Asia', year: '1999', value: 3634},
-  {country: 'Asia', year: '2050', value: 5268},
-
-  {country: 'Africa', year: '1750', value: 106},
-  {country: 'Africa', year: '1800', value: 107},
-  {country: 'Africa', year: '1850', value: 111},
-  {country: 'Africa', year: '1900', value: 133},
-  {country: 'Africa', year: '1950', value: 221},
-  {country: 'Africa', year: '1999', value: 767},
-  {country: 'Africa', year: '2050', value: 1766},
-
-  {country: 'Europe', year: '1750', value: 163},
-  {country: 'Europe', year: '1800', value: 203},
-  {country: 'Europe', year: '1850', value: 276},
-  {country: 'Europe', year: '1900', value: 408},
-  {country: 'Europe', year: '1950', value: 547},
-  {country: 'Europe', year: '1999', value: 729},
-  {country: 'Europe', year: '2050', value: 628},
-
-  {country: 'Oceania', year: '1750', value: 200},
-  {country: 'Oceania', year: '1800', value: 200},
-  {country: 'Oceania', year: '1850', value: 200},
-  {country: 'Oceania', year: '1900', value: 300},
-  {country: 'Oceania', year: '1950', value: 230},
-  {country: 'Oceania', year: '1999', value: 300},
-  {country: 'Oceania', year: '2050', value: 460},
-];
-
-export const asia_data =[
-  {country: 'Asia', year: '1750', value: 502},
-  {country: 'Asia', year: '1800', value: 635},
-  {country: 'Asia', year: '1850', value: 809},
-  {country: 'Asia', year: '1900', value: 947},
-  {country: 'Asia', year: '1950', value: 1402},
-  {country: 'Asia', year: '1999', value: 3634},
-  {country: 'Asia', year: '2050', value: 5268}
-];
-
-export const years=['1750','1800','1850','1900','1950','1999','2050']
-export const asia_value_1=[502,635,809,947,1402,3634,5268]
-export const asia_value_2=[635,809,947,1402,3634,5268,502]
-export const asia_value_3=[809,947,1402,3634,5268,502,635]
-export const asia_value_4=[947,1402,3634,5268,502,635,809]
-export const asia_value_5=[1402,3634,5268,502,635,809,947]
-export const asia_value_6=[3634,5268,502,635,809,947,1402]
-export const asia_value_7=[5268,502,635,809,947,1402,3634]
-
-export function get_data_array(data){
-  return data.map(a=>a.value);
-}
-
-export function assign_value(arr,data){
-  let t=data;
-  for(let i=0;i<years.length;++i)
-    t[i].value=arr[i]
-  return t;
-}
-
-export function scroll_array(arr){
-  let a=arr
-  a.push(a.shift())
-  return a
-}
-
-export function assemble_obj(arr){
-  let o = {}
-  for(let i=0;i<years.length;++i){
-    o[years[i]]=arr[i]
-  }
-  return o
+export default {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis:
+    {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    }
+    ,
+    yAxis:
+    {
+        type: 'value'
+    }
+    ,
+    series: [
+        {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            areaStyle: { normal: {} },
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            areaStyle: { normal: {} },
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: '视频广告',
+            type: 'line',
+            stack: '总量',
+            areaStyle: { normal: {} },
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name: '直接访问',
+            type: 'line',
+            stack: '总量',
+            areaStyle: { normal: {} },
+            data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name: '搜索引擎',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: { normal: {} },
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
 }

@@ -29,14 +29,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import bubbleChart from './components/bubble-chart.vue'
-import areaStack from './components/area-stack.vue'
-import nightingaleRoseChart from './components/nightingale-rose-chart.vue'
-import mapChart from './components/map-chart.vue'
-import coronaChart from './components/corona-chart.vue'
-import heatmapChart from './components/heatmap-chart.vue'
-import lineChart from './components/line-chart.vue'
-import machinesPannel from './views/machines-pannel/index.vue'
+import bubbleChart from './components/bubble-chart'
+import areaStack from './components/area-stack'
+import nightingaleRoseChart from './components/nightingale-rose-chart'
+import coronaChart from './components/corona-chart'
+import lineChart from './components/line-chart'
+import machinesPannel from './views/machines-pannel/index'
 import machineDetail from './views/machine-detail'
 
 export default {
@@ -45,22 +43,13 @@ export default {
         bubbleChart,
         areaStack,
         nightingaleRoseChart,
-        mapChart,
         coronaChart,
-        heatmapChart,
         lineChart,
         machinesPannel,
         machineDetail
     },
-    data() {
-        return {}
-    },
-    methods: {
-    },
     computed: {
         ...mapState(['machineDetailShow'])
-    },
-    mounted() {
     }
 }
 </script>

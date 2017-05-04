@@ -1,16 +1,14 @@
 <template>
     <div class="spindle-info">
-        主轴信息
+        <realtime-chart></realtime-chart>
     </div>
 </template>
 
 <script>
+import realtimeChart from './../../components/realtime-chart'
 export default {
     name: 'SpindleInfo',
-    data() {
-        return {
-        }
-    }
+    components:{realtimeChart}
 }
 </script>
 
