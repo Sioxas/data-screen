@@ -33,6 +33,7 @@ class APIFactory {
                 })
             } catch(e){
                 this.reject(e)
+                console.error(e)
             }
         })
         return this
@@ -102,17 +103,47 @@ export default {
     /**
      * 获取机床报警信息
      *
-     * @param {number} plantID 车间编号
-     * @param {number} machineID 机床编号
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
      * @returns {Promise} Http Promise
      */
-    getMachineWarn(plantID, machineID) {
+    getMachineWarn(plant, machine) {
         return new APIFactory($http.get('http://localhost/login/morris_files/newdata_morris_warn.php', {
             params: {
                 timestamp: new Date().Format("yyyy-MM-dd hh:mm:ss"),
-                plant: plantID,
-                machine: machineID
+                plant,
+                machine
             }
         }))
+    },
+
+    /**
+     * 获取机床历史状态
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @returns {Promise} Http Promise
+     */
+    getMachineHistoryStatus(plant,machine,f_date,t_date){
+        return new APIFactory($http.post('http://localhost/login/inquiry_files/for_mac_status.php',querystring.stringify({
+            plant,machine,f_date,t_date
+        })))
+    },
+
+    /**
+     * 获取机床历史状态列表
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @returns {Promise} Http Promise
+     */
+    getMachineHistoryStatusList(plant,machine,f_date,t_date){
+        return new APIFactory($http.post('http://localhost/login/history_files/history_data_status.php',querystring.stringify({
+            plant,machine,f_date,t_date
+        })))
     }
 }

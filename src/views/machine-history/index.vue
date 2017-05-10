@@ -1,25 +1,23 @@
 <template>
-    <div class="machine-detail">
+    <div class="machine-history">
         <div class="container">
             <div class="x-button" @click="closeMachineDetail">
                 <router-link to="/">
                     <img src="./../../assets/close.svg" alt="关闭">
                 </router-link>
-
             </div>
             <ui-frame>
-                <div class="machine-detail-header">
-                    <h2>{{plantID}}车间{{machineID}}号机床实时数据</h2>
+                <div class="machine-history-header">
+                    <h2>{{plantID}}车间{{machineID}}号机床历史数据</h2>
                     <div class="switch-button">
-                        <router-link to="/history">查看机床历史数据</router-link>
+                        <router-link to="/detail">查看机床实时数据</router-link>
                     </div>
                 </div>
-
-                <div class="machine-detail-content">
+                <div class="machine-history-content">
                     <div class="tab-linker">
-                        <router-link to="/detail/baseinfo" class="inactive">基本信息</router-link>
-                        <router-link to="/detail/spindle" class="inactive">主轴与给进信息</router-link>
-                        <router-link to="/detail/alarm" class="inactive">报警信息</router-link>
+                        <router-link to="/history/status" class="inactive">工作状态统计</router-link>
+                        <router-link to="/history/spindle" class="inactive">主轴转速记录</router-link>
+                        <router-link to="/history/product" class="inactive">产品加工记录表</router-link>
                         <div class="inactive"></div>
                     </div>
                     <keep-alive>
@@ -36,12 +34,8 @@ import uiFrame from './../../components/ui-frame.vue'
 import types from './../../store/types.js'
 import { mapState } from 'vuex'
 export default {
-    name: 'machineDetail',
+    name: 'machineHistory',
     components: { uiFrame },
-    data() {
-        return {
-        }
-    },
     computed: {
         ...mapState(['plantID', 'machineID'])
     },
@@ -56,7 +50,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "./../../style/colors.less";
-.machine-detail {
+.machine-history {
     position: fixed;
     margin: auto;
     width: 100%;
@@ -77,7 +71,7 @@ export default {
                 height: 50px;
             }
         }
-        .machine-detail-header {
+        .machine-history-header {
             position: relative;
             h2 {
                 color: #fff;
@@ -103,8 +97,7 @@ export default {
                 }
             }
         }
-
-        .machine-detail-content {
+        .machine-history-content {
             color: #fff;
             .tab-linker {
                 display: flex;

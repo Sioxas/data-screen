@@ -1,9 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import MachineDetail from '@/views/machine-detail'
-import BaseInfo from '@/views/machine-detail/base-info.vue'
-import SpindleInfo from '@/views/machine-detail/spindle-info.vue'
-import AlarmInfo from '@/views/machine-detail/alarm-info.vue'
+import BaseInfo from '@/views/machine-detail/base-info'
+import SpindleInfo from '@/views/machine-detail/spindle-info'
+import AlarmInfo from '@/views/machine-detail/alarm-info'
+
+import MachineHistory from '@/views/machine-history'
+import WorkStatus from '@/views/machine-history/work-status'
+import Spindle from '@/views/machine-history/spindle'
+import ProductRecord from '@/views/machine-history/product-record'
 
 Vue.use(Router)
 
@@ -31,6 +37,29 @@ export default new Router({
               component:AlarmInfo
           }
       ]
+    },
+    {
+        path:'/history',
+        name:'MachineHistory',
+        component:MachineHistory,
+        children:[
+            {
+                path:'/',
+                redirect:'status'
+            },
+            {
+                path:'status',
+                component:WorkStatus
+            },
+            {
+                path:'spindle',
+                component:Spindle
+            },
+            {
+                path:'product',
+                component:ProductRecord
+            }
+        ]
     }
   ]
 })

@@ -120,7 +120,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this)
         this.$api.getMachineDetail(this.plantID, this.machineID).then(data => {
                 this.machineState = data.machine_state    //机床状态
                 this.machineStart = data.machine_start    //开机时间

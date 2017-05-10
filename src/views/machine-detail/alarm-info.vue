@@ -48,7 +48,6 @@ export default {
             this.warnData=t
         }).catch(e => {
             this.error = true
-            console.error(e)
         })
     }
 }
