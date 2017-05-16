@@ -35,7 +35,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['plantID', 'machineID']),
+        ...mapState(['plantID', 'machineID'])
     },
     mounted() {
         this.$api.getMachineWarn(this.plantID, this.machineID).then(data => {

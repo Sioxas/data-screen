@@ -36,13 +36,19 @@
                 </ul>
             </div>
         </div>
+        <div class="pannel-row">
+            <gantt-chart/>
+        </div>
     </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
+import ganttChart from '@/components/gantt-chart'
+
 export default {
     name:'workStatus',
+    components:{ganttChart},
     data(){
         return{
             error:false,

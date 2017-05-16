@@ -145,5 +145,53 @@ export default {
         return new APIFactory($http.post('http://localhost/login/history_files/history_data_status.php',querystring.stringify({
             plant,machine,f_date,t_date
         })))
+    },
+
+    /**
+     * 获取主轴转速
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 车间编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @returns {Promise} Http Promise
+     */
+    getSpindleSpeedList(plant,machine,f_date,t_date){
+        return new APIFactory($http.post('http://localhost/login/history_files/history_data_acts.php',querystring.stringify({
+            plant,machine,f_date,t_date
+        })))
+    },
+
+    /**
+     * 获取警报信息记录
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @returns {Promise} Http Promise
+     */
+    getHistoryDataWarn(plant,machine,f_date,t_date){
+        return new APIFactory($http.post('http://localhost/login/history_files/history_data_warn.php',querystring.stringify({
+            plant,machine,f_date,t_date
+        })))
+    },
+
+    /**
+     * 获取机床加工产品记录表
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @param {number} page 页码
+     * @param {number} [isdes=0]
+     * @param {number} [id=99]
+     * @returns {Promise} Http Promise
+     */
+    getHistoryDataProcess(plant,machine,f_date,t_date,page,isdes=0,id=99){
+        return new APIFactory($http.post('http://localhost/login/history_files/history_data_process.php',querystring.stringify({
+            plant,machine,f_date,t_date,page,isdes,id
+        })))
     }
 }
