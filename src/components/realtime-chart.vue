@@ -7,8 +7,21 @@
 <script>
 import echarts from 'echarts'
 import { mixOption } from './../config/echarts.conf'
+
+function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+        ]
+    }
+}
+
 export default {
-    name:'RealtimeChart',
+    name: 'RealtimeChart',
     mounted() {
         let data = [];
         let now = +new Date(1997, 9, 3);
@@ -16,18 +29,6 @@ export default {
         let value = Math.random() * 1000;
         for (let i = 0; i < 1000; i++) {
             data.push(randomData());
-        }
-
-        function randomData() {
-            now = new Date(+now + oneDay);
-            value = value + Math.random() * 21 - 10;
-            return {
-                name: now.toString(),
-                value: [
-                    [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                    Math.round(value)
-                ]
-            }
         }
 
         let realtimeChart = echarts.init(document.getElementById('realtime-chart'))
@@ -65,7 +66,7 @@ export default {
             }]
         }))
 
-        setInterval( () => {
+        setInterval(() => {
 
             for (let i = 0; i < 5; i++) {
                 data.shift();
@@ -85,6 +86,6 @@ export default {
 <style scoped lang="less">
 #realtime-chart {
     width: 100%;
-    height:400px;
+    height: 400px;
 }
 </style>

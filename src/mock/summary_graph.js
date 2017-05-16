@@ -1,7 +1,8 @@
+import {formatSeconds} from '@/utils/utils'
 export default {
     tooltip: {
         trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
+        formatter: params => params.name+'('+params.percent + '%)<br>' + params.seriesName + ':' + formatSeconds(params.value)
     },
     grid:{
         show:false
@@ -12,27 +13,18 @@ export default {
     yAxis:{
         show:false
     },
-    visualMap: {
-        show: false,
-        min: 80,
-        max: 600,
-        inRange: {
-            colorLightness: [0, 1]
-        }
-    },
-    series:[
+    series:
         {
-            name: '访问来源',
+            name: '持续时间',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 274, name: '联盟广告' },
-                { value: 235, name: '视频广告' },
-                { value: 400, name: '搜索引擎' }
-            ].sort(function (a, b) { return a.value - b.value }),
+                { value: 53822, name: '运行' },
+                { value: 55034, name: '关机' },
+                { value: 53212, name: '待机' },
+                { value: 151, name: '报警' }
+            ],
             roseType: 'angle',
             label: {
                 normal: {
@@ -65,5 +57,4 @@ export default {
                 return Math.random() * 200;
             }
         }
-]
 }
