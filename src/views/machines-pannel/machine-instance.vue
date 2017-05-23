@@ -10,11 +10,6 @@
 import types from './../../store/types.js'
 export default {
     props: ['state', 'mid'],
-    data() {
-        return {
-        }
-    },
-    components: {},
     methods: {
         openMachineDetail(machineID) {
             this.$router.push('detail')

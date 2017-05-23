@@ -193,5 +193,20 @@ export default {
         return new APIFactory($http.post('http://localhost/login/history_files/history_data_process.php',querystring.stringify({
             plant,machine,f_date,t_date,page,isdes,id
         })))
+    },
+
+    /**
+     * 获取机床加工产品记录数量
+     *
+     * @param {number} plant 车间编号
+     * @param {number} machine 机床编号
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} f_date 开始时间
+     * @param {Datetime yyyy/MM/dd hh:mm:ss} t_date 结束时间
+     * @returns {Promise} Http Promise
+     */
+    getHistoryDataProcessNum(plant,machine,f_date,t_date){
+        return $http.post('http://localhost/login/history_files/history_data_process_num.php',querystring.stringify({
+            plant,machine,f_date,t_date
+        }))
     }
 }

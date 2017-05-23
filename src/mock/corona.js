@@ -112,7 +112,7 @@ let lineStyle = {
 export default {
     legend: {
         bottom: 5,
-        data: ['北京', '上海', '广州'],
+        data: ['车间1', '车间2', '车间3'],
         itemGap: 20,
         textStyle: {
             color: '#fff',
@@ -174,7 +174,7 @@ export default {
     },
     series: [
         {
-            name: '北京',
+            name: '车间1',
             type: 'radar',
             lineStyle: lineStyle,
             data: dataBJ,
@@ -191,7 +191,7 @@ export default {
             }
         },
         {
-            name: '上海',
+            name: '车间2',
             type: 'radar',
             lineStyle: lineStyle,
             data: dataSH,
@@ -208,7 +208,7 @@ export default {
             }
         },
         {
-            name: '广州',
+            name: '车间3',
             type: 'radar',
             lineStyle: lineStyle,
             data: dataGZ,
