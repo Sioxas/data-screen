@@ -21,9 +21,13 @@ export default {
             switch (this.state) {
                 case -1:
                     return 'off';
+                case '-1':
+                    return 'off';
                 case 'a':
                     return 'alarm';
                 case 3:
+                    return 'on';
+                case '3':
                     return 'on';
                 default:
                     return 'standby';

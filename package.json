@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "echarts": "^3.5.4",
+    "echarts": "^3.6.1",
+    "echarts-liquidfill": "^1.0.5",
     "g2": "^2.2.4",
     "lodash": "^4.17.4",
+    "socket.io-client": "^2.0.1",
     "tween.js": "^16.6.0",
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
@@ -56,7 +58,8 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.1",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "worker-loader": "^0.8.0"
   },
   "engines": {
     "node": ">= 4.0.0",

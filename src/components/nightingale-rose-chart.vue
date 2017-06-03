@@ -2,7 +2,6 @@
     <div class="nightingale-rose-chart">
 
         <div id="nightingale-rose-chart"></div>
-
     </div>
 </template>
 
@@ -10,11 +9,21 @@
 import echarts from 'echarts'
 import { mixOption } from './../config/echarts.conf'
 import nightingaleRoseOption from './../mock/nightingale_rose'
+import { mapState } from 'vuex'
 
+let nightingaleRoseChart
 export default {
+    computed: {
+        ...mapState(['count'])
+    },
     mounted() {
-        let nightingaleRoseChart = echarts.init(document.getElementById('nightingale-rose-chart'))
-        nightingaleRoseChart.setOption(mixOption(nightingaleRoseOption))
+        nightingaleRoseChart = echarts.init(document.getElementById('nightingale-rose-chart'))
+        nightingaleRoseChart.setOption(mixOption(nightingaleRoseOption(this.$store.state.count)))
+    },
+    watch: {
+        count(val) {
+            nightingaleRoseChart.setOption(mixOption(nightingaleRoseOption(val)))
+        }
     }
 }
 </script>
@@ -23,6 +32,6 @@ export default {
 <style scoped>
 #nightingale-rose-chart {
     width: 380px;
-    height:380px;
+    height: 380px;
 }
 </style>

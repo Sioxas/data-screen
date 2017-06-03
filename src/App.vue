@@ -5,7 +5,7 @@
         </div>
         <div class="content">
             <div class="left">
-                <bubble-chart></bubble-chart>
+                <nightingale-rose-chart></nightingale-rose-chart>
                 <area-stack></area-stack>
                 <line-chart></line-chart>
             </div>
@@ -16,10 +16,10 @@
             <!--<map-chart></map-chart>-->
             <!--<heatmap-chart></heatmap-chart>-->
             <!--</div>-->
-            <div class="right">
-                <corona-chart></corona-chart>
+            <!--<div class="right">
+                <th-dashboard></th-dashboard>
                 <nightingale-rose-chart></nightingale-rose-chart>
-            </div>
+            </div>-->
         </div>
         <transition name="fade">
             <router-view></router-view>
@@ -32,10 +32,10 @@ import { mapState } from 'vuex'
 import bubbleChart from './components/bubble-chart'
 import areaStack from './components/area-stack'
 import nightingaleRoseChart from './components/nightingale-rose-chart'
-import coronaChart from './components/corona-chart'
 import lineChart from './components/line-chart'
 import machinesPannel from './views/machines-pannel/index'
 import machineDetail from './views/machine-detail'
+import thDashboard from '@/components/th-dashboard'
 
 export default {
     name: 'app',
@@ -43,10 +43,10 @@ export default {
         bubbleChart,
         areaStack,
         nightingaleRoseChart,
-        coronaChart,
         lineChart,
         machinesPannel,
-        machineDetail
+        machineDetail,
+        thDashboard
     },
     computed: {
         ...mapState(['machineDetailShow'])

@@ -39,14 +39,16 @@
 
 <script type="text/ecmascript-6">
 
-import uiFrame from '../../components/ui-frame.vue'
+import uiFrame from '@/components/ui-frame.vue'
 import machineInstance from './machine-instance.vue'
-import machinePosition from '../../config/machine_position'
+import machinePosition from '@/config/machine_position'
 import groupBy from 'lodash/groupBy'
 import find from 'lodash/find'
 import forEach from 'lodash/forEach'
 
-import colors from '../../config/colors'
+import colors from '@/config/colors'
+import types from '@/store/types'
+import SocketWorker from 'worker-loader!./../../worker/socket-task.js'
 
 export default {
     data() {
@@ -74,12 +76,14 @@ export default {
             }
             forEach(this.machinePosition, i => {
                 switch (i.state) {
+                    case '-1':
                     case -1:
                         res.off++
                         break;
                     case 'a':
                         res.alarm++
                         break;
+                    case '3':
                     case 3:
                         res.on++
                         break;
@@ -88,6 +92,7 @@ export default {
                         break;
                 }
             })
+            this.$store.commit(types.UPDATE_COUNTS,res)
             return res
         }
     },
@@ -101,9 +106,30 @@ export default {
                     state: item.run
                 }
             })
-        }).catch(e=>{
+        }).catch(e => {
             console.error(e)
         })
+
+        let socketTask = new SocketWorker()
+        socketTask.onmessage = messageEvent => {
+            let data = messageEvent.data
+            try {
+                let machineState = JSON.parse(data)
+                that.machinePosition = that.machinePosition.map(item => {
+                    let o
+                    if(o=find(machineState,chr => parseInt(chr.MachineID) === item.id)){
+                        return {
+                            ...item,
+                            state:o.run
+                        }
+                    } else {
+                        return item
+                    }
+                })
+            } catch (error) {
+                console.log(data)
+            }
+        }
     }
 }
 </script>

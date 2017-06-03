@@ -18,7 +18,14 @@ export default new Vuex.Store({
     /**（机床详情）机床车间编号 */
     plantID:1,
     /**（机床详情）机床编号 */
-    machineID:null
+    machineID:null,
+    /**机床状态统计 */
+    count:{
+        on:0,
+        off:0,
+        standby:0,
+        alarm:0
+    }
   },
   getters,
   mutations,

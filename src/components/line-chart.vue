@@ -1,6 +1,6 @@
 <template>
     <div class="line-chart">
-        <ui-frame title="动态数据">
+        <ui-frame title="轮毂加工数量">
             <div id="line-chart"></div>
         </ui-frame>
     </div>

@@ -6,8 +6,8 @@ import types from './types'
 export default {
     /**
      * MUTATION 关闭机床状态面板
-     * 
-     * @param {any} state 
+     *
+     * @param {any} state
      */
     [types.CLOSE_MACHINE_DETAIL_PANNEL](state) {
         state.machineDetailShow = false
@@ -15,11 +15,21 @@ export default {
 
     /**
      * MUTATION 打开机床状态面板
-     * 
-     * @param {any} state 
+     *
+     * @param {any} state
      */
     [types.OPEN_MACHINE_DETAIL_PANNEL](state,machineID) {
         state.machineID=machineID
         state.machineDetailShow = true
+    },
+
+    /**
+     * MUTATION 更新机床状态统计
+     *
+     * @param {any} state
+     * @param {any} counts
+     */
+    [types.UPDATE_COUNTS](state,counts){
+        state.count=counts
     }
 }

@@ -1,4 +1,4 @@
-export default {
+export default ({alarm,off,on,standby})=>({
     tooltip: {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -14,25 +14,24 @@ export default {
     },
     visualMap: {
         show: false,
-        min: 80,
-        max: 600,
+        min: 0,
+        max: 50,
         inRange: {
             colorLightness: [0, 1]
         }
     },
     series:[
         {
-            name: '访问来源',
+            name: '机床状态',
             type: 'pie',
             radius: '55%',
             center: ['50%', '50%'],
             data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 274, name: '联盟广告' },
-                { value: 235, name: '视频广告' },
-                { value: 400, name: '搜索引擎' }
-            ].sort(function (a, b) { return a.value - b.value }),
+                { value: on, name: '运行' },
+                { value: off, name: '关机' },
+                { value: standby, name: '待机' },
+                { value: alarm, name: '报警' }
+            ],
             roseType: 'angle',
             label: {
                 normal: {
@@ -66,4 +65,4 @@ export default {
             }
         }
 ]
-}
+})

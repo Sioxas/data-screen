@@ -1,6 +1,6 @@
 <template>
     <div class="area-stack">
-        <ui-frame title="层叠图">
+        <ui-frame title="一周机床状态统计">
             <div id="area-stack"></div>
         </ui-frame>
     </div>
